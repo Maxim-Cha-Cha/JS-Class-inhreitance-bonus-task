@@ -4,6 +4,7 @@ class Cat {
     this.breed = breed;
     this.name = name;
     this.numberOfCaughtMice = 0;
+    this.successChance = 0.5;
   }
   get breed() {
     return this._breed;
@@ -54,6 +55,14 @@ class StrayCat extends Cat {
   constructor(name, numberOfCaughtMice, numberOfEatenMice = 0) {
     super("Stray", name, numberOfCaughtMice, (numberOfEatenMice = 0));
     this.numberOfEatenMice = numberOfEatenMice;
+  }
+  getEat() {
+    if (this.numberOfCaughtMice > this.numberOfEatenMice) {
+      this.numberOfCaughtMice--, this.numberOfEatenMice++;
+      return "Ест";
+    } else {
+      return "Нужно идти на охоту";
+    }
   }
 }
 
