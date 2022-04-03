@@ -45,9 +45,11 @@ class Cat {
   getSleep() {
     return "Спит";
   }
-  caughingMice() {
-    this.numberOfCaughtMice++;
-    return "Ест";
+  caughingMice() {{
+    if (this.successChance < Math.random()) {
+      this.numberOfCaughtMice++;
+      return "О, повезло, повезло";
+    }}return 'Не удачно'
   }
 }
 const cat = new Cat("Сфинкс", "Бобик");
@@ -55,6 +57,7 @@ class StrayCat extends Cat {
   constructor(name, numberOfCaughtMice, numberOfEatenMice = 0) {
     super("Stray", name, numberOfCaughtMice, (numberOfEatenMice = 0));
     this.numberOfEatenMice = numberOfEatenMice;
+    this.successChance = 0.85;
   }
   getEat() {
     if (this.numberOfCaughtMice > this.numberOfEatenMice) {
@@ -67,3 +70,4 @@ class StrayCat extends Cat {
 }
 
 const cat1 = new StrayCat("Валера");
+
